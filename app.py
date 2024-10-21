@@ -237,13 +237,20 @@ if city:
             fig_temp.update_layout(
                 xaxis_title="Date & Time",
                 yaxis_title="Temperature (°C)",
-                hovermode='x unified',
+                hovermode='False',
                 legend=dict(y=1.1, orientation='h'),
                 margin=dict(l=20, r=20, t=40, b=20),
-                height=400
+                height=400,
+                dragmode=False 
             )
             
-            st.plotly_chart(fig_temp, use_container_width=True, config={'displayModeBar': False})
+            st.plotly_chart(fig_temp, use_container_width=True, config={
+                'displayModeBar': False,
+                'staticPlot': True,
+                'scrollZoom': False, 
+                'doubleClick': False 
+            })
+            
             st.markdown("""---""")
             
             # Weather Types Distribution Bar Chart
@@ -294,9 +301,9 @@ if city:
             showlegend=False,
             height=400,
             margin=dict(l=20, r=20, t=40, b=20),
-            # Make the chart background transparent to work well in both modes
             plot_bgcolor='rgba(0,0,0,0)',
-            # Add grid lines for better readability
+            hovermode=False,  # Disable hover
+            dragmode=False,  # Disable drag mode
             yaxis=dict(
                 gridcolor='rgba(128,128,128,0.2)',
                 zerolinecolor='rgba(128,128,128,0.2)'
@@ -307,8 +314,13 @@ if city:
             )
         )
 
-        st.plotly_chart(fig_bar, use_container_width=True, config={'displayModeBar': False})
-
+        st.plotly_chart(fig_bar, use_container_width=True, config={
+            'displayModeBar': False,
+            'staticPlot': True,
+            'scrollZoom': False,
+            'doubleClick': False
+        })
+        
     else:
         st.error("City not found or API error occurred. Please try again.")
 
