@@ -243,11 +243,11 @@ if city:
                 height=400
             )
             
-            st.plotly_chart(fig_temp, use_container_width=True)
+            st.plotly_chart(fig_temp, use_container_width=True, config={'displayModeBar': False})
             st.markdown("""---""")
             
             # Weather Types Distribution Bar Chart
-            st.subheader("📊 Weather Conditions Distribution")
+            st.subheader("📊 Weather Conditions")
             
             weather_counts = Counter(df['description'])
         weather_df = pd.DataFrame({
@@ -289,7 +289,6 @@ if city:
         ])
 
         fig_bar.update_layout(
-            title='Weather Conditions Distribution',
             xaxis_title="Weather Condition",
             yaxis_title="Frequency",
             showlegend=False,
@@ -308,7 +307,7 @@ if city:
             )
         )
 
-        st.plotly_chart(fig_bar, use_container_width=True)
+        st.plotly_chart(fig_bar, use_container_width=True, config={'displayModeBar': False})
 
     else:
         st.error("City not found or API error occurred. Please try again.")
