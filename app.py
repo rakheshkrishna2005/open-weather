@@ -301,4 +301,4 @@ if city:
             st.error("City not found or API error occurred. Please try again.")
 
 st.markdown("---")
-st.caption("Developed by Rakhesh Krishna. Data provided by OpenWeather API")
+st.caption("Data provided by OpenWeather API")
